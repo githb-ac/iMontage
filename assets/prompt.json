@@ -1,0 +1,13 @@
+{
+    "2" :
+    {
+        "task_type": "multiview",
+        "prompts" : "1. The view zooms in. 2. The camera looks up to the sky. 3. The view zooms out.",
+        "images" : [
+            "assets/images/city.png"
+        ],
+        "height" : 427,
+        "width" : 640,
+        "output_num" : 3
+    }
+}

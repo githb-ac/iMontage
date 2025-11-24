@@ -1,0 +1,137 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fastvideo"
+version = "0.1.1"
+description = "FastVideo"
+readme = "README.md"
+requires-python = ">=3.10"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: Apache Software License",
+]
+
+dependencies = [
+    # Core Libraries
+    "scipy", "six", "h5py",
+
+    # Machine Learning & Transformers
+    "transformers", "tokenizers", "sentencepiece",
+    "timm", "peft", "diffusers", "bitsandbytes",
+    "torch", "torchvision",
+
+    # Acceleration & Optimization
+    "accelerate",
+
+    # Computer Vision & Image Processing
+    "opencv-python", "pillow", "imageio",
+    "imageio-ffmpeg", "decord", "einops",
+
+    # Experiment Tracking & Logging
+    "wandb", "loguru", "test-tube",
+
+    # Miscellaneous Utilities
+    "tqdm", "PyYAML", "protobuf",
+    "gradio", "moviepy", "flask",
+    "flask_restful", "aiohttp", "huggingface_hub", "cloudpickle",
+    # System & Monitoring Tools
+    "gpustat", "watch", "remote-pdb",
+
+    # Kernel & Packaging
+    "wheel",
+
+    # Training Dependencies
+    "torchdata",
+    "pyarrow",
+    "datasets",
+    "av==13.1.0",
+]
+
+[tool.uv]
+extra-index-url = ["https://download.pytorch.org/whl/cu128"]
+
+[project.optional-dependencies]
+
+lint = [
+    "pre-commit",
+]
+
+test = [ 
+    "av",
+    "pytorch-msssim",
+    "pytest",
+]
+
+dev = [ "fastvideo[lint]", "fastvideo[test]", ]
+
+[project.scripts]
+fastvideo = "fastvideo.v1.entrypoints.cli.main:main"
+
+[tool.setuptools.packages.find]
+exclude = ["assets*", "docker*", "docs", "scripts*"]
+
+[tool.wheel]
+exclude = ["assets*", "docker*", "docs", "scripts*"]
+
+[tool.mypy]
+warn_unused_configs = true
+ignore_missing_imports = true
+disallow_untyped_calls = true
+check_untyped_defs = true
+follow_imports = "silent"
+
+[tool.codespell]
+skip ="./data,./wandb,./csrc/sliding_tile_attention/tk"
+
+[tool.ruff]
+# Allow lines to be as long as 80.
+line-length = 80
+
+[tool.ruff.lint]
+select = [
+    # pycodestyle
+    "E",
+    # Pyflakes
+    "F",
+    # pyupgrade
+    "UP",
+    # flake8-bugbear
+    "B",
+    # flake8-simplify
+    "SIM",
+    # isort
+    # "I",
+    "G",
+]
+ignore = [
+    # star imports
+    "F405", "F403",
+    # lambda expression assignment
+    "E731",
+    # Loop control variable not used within loop body
+    "B007",
+    # f-string format
+    "UP032",
+    # line too long
+    "E501",
+]
+
+[tool.ruff.lint.per-file-ignores]
+"fastvideo/models/stepvideo/diffusion/video_pipeline.py" = ["F821"]
+"fastvideo/sample/call_remote_server_stepvideo.py" = ["E722"]
+"csrc/sliding_tile_attention/test/bench.py" = ["F841"]
+"fastvideo/models/stepvideo/__init__.py" = ["F403"]
+"fastvideo/models/stepvideo/utils/__init__.py" = ["F403"]
+# Ignore all files that end in `_test.py`.
+"fastvideo/models/hunyuan/diffusion/pipelines/pipeline_hunyuan_video.py" = ["E741"]
+
+
+[tool.yapf]
+column_limit = 80
+
+[tool.isort]
+line_length = 80
+use_parentheses = true
+skip_gitignore = true
