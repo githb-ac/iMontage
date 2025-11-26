@@ -6,7 +6,7 @@
   <!-- 可以放 arXiv / project page / demo / hf 等链接的徽章 -->
   <a href="https://arxiv.org/abs/2511.20635"><img src="https://img.shields.io/badge/arXiv-2511.20635-b31b1b.svg" alt="arXiv"></a>
   <a href="https://kr1sjfu.github.io/iMontage-web/"><img src="https://img.shields.io/badge/Project-Page-4b9e5f.svg" alt="Project Page"></a>
-  <a href="assets/demo/demo.mp4">
+  <a href="assets/demo/iMontage_demo.mp4">
     <img src="https://img.shields.io/badge/Online-Demo-blue.svg" alt="Demo">
   </a>
   <a href="https://huggingface.co/Kr1sJ/iMontage"><img src="https://img.shields.io/badge/Model-HuggingFace-orange.svg" alt="HuggingFace"></a>
