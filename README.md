@@ -103,8 +103,7 @@ iMontage
 
 ## 🚀 Inference
 
-After installing the environment and downloading the pretrained weights, let's start with our infer example.
-
+After installing the environment and downloading the pretrained weights, let's start with our infer example. Do note that our model now only support **<= 4 inputs** and **<= 4 outputs**.
 
 ### 🔹 Example
 
