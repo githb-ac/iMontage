@@ -107,3 +107,5 @@ After installing the environment and downloading the pretrained weights, let's s
 ```bash
 bash scripts/inference.sh
 ```
+
+In the example, we infer with --prompt "assets/prompt.json", which contain five of our maining 
